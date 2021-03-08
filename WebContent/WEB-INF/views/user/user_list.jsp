@@ -20,18 +20,7 @@
 </head>
 <body>
     <!-- 헤더 -->
-    <section class="section_header">
-        <ul>
-            <li class="logo">GLOG</li>
-            <li class="cate">글 관리</li>
-            <li class="cate">회원 관리</li>
-            <li class="cate">통계 관리</li>
-        </ul>
-        <ul>
-            <li class="cate">설정</li>
-            <li class="cate">로그인</li>
-        </ul>
-    </section>
+	<c:import url="../common/common_header.jsp" />
 
     <!-- 메인화면 -->
     <section class="section_main">
