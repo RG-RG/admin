@@ -3,6 +3,7 @@ package kr.co.rgrg.admin.main.dao;
 import org.apache.ibatis.session.SqlSession;
 
 import kr.co.rgrg.admin.dao.GetRgrgHandler;
+import kr.co.rgrg.admin.main.domain.AdminLoginDomain;
 import kr.co.rgrg.admin.main.vo.AdminLoginVO;
 import kr.co.rgrg.admin.main.vo.AdminUpdatePassVO;
 
@@ -20,22 +21,22 @@ public class MainDAO {
 		return mDAO;
 	}//getInstance
 	
-	public String selectAdminLogin(AdminLoginVO alVO) {
+	public AdminLoginDomain selectAdminLogin(AdminLoginVO alVO) {
 		
 		SqlSession ss= GetRgrgHandler.getInstance().getSqlSession();
-		String id=ss.selectOne("kr.co.rgrg.admin.main.selectAdminId",alVO);
+		AdminLoginDomain alDomain=ss.selectOne("kr.co.rgrg.admin.main.selectAdminId",alVO);
 		ss.close();
 		
-		return id;
+		return alDomain;
 	}//selectAdminLogin
 	
-	public String selectCurrentPass(AdminLoginVO alVO) {
+	public String selectCurrentPass(String id) {
 		
 		SqlSession ss= GetRgrgHandler.getInstance().getSqlSession();
-		String id=ss.selectOne("kr.co.rgrg.admin.main.selectCurrentPassId",alVO);
+		String pass=ss.selectOne("kr.co.rgrg.admin.main.selectCurrentPassId",id);
 		ss.close();
 		
-		return id;
+		return pass;
 	}//selectCurrentPass
 	
 	public int updateAdminPass(AdminUpdatePassVO aupVO) {

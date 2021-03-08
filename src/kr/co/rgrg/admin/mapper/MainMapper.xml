@@ -4,16 +4,18 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.rgrg.admin.main">
 
-	<select id="selectAdminId" parameterType="kr.co.rgrg.admin.main.vo.AdminLoginVO" resultType="String">
-	 	select id
+	<select id="selectAdminId" parameterType="kr.co.rgrg.admin.main.vo.AdminLoginVO" 
+	resultType="kr.co.rgrg.admin.main.domain.AdminLoginDomain">
+	 	select id, pass
 		from admin
-		where id=#{ id } and pass=#{ pass }
+		where id=#{ id }
 	</select>
 	
-	<select id="selectCurrentPassId" parameterType="kr.co.rgrg.admin.main.vo.AdminLoginVO" resultType="String">
-	 	select id
+	<select id="selectCurrentPassId" parameterType="String"
+	resultType="String">
+	 	select pass
 		from admin
-		where id=#{ id } and pass=#{ pass }
+		where id=#{ id }
 	</select>
 	
 	<update id="updateAdminPass" parameterType="kr.co.rgrg.admin.main.vo.AdminUpdatePassVO">

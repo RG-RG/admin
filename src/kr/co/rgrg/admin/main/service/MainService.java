@@ -1,25 +1,22 @@
 package kr.co.rgrg.admin.main.service;
 
 import kr.co.rgrg.admin.main.dao.MainDAO;
+import kr.co.rgrg.admin.main.domain.AdminLoginDomain;
 import kr.co.rgrg.admin.main.vo.AdminLoginVO;
 import kr.co.rgrg.admin.main.vo.AdminUpdatePassVO;
 
 public class MainService {
 	
-	public String adminLogin(AdminLoginVO alVO) {
-		String id=MainDAO.getInstance().selectAdminLogin(alVO);
+	public AdminLoginDomain adminLogin(AdminLoginVO alVO) {
+		AdminLoginDomain alDomain=MainDAO.getInstance().selectAdminLogin(alVO);
 		
-		return id;
+		return alDomain;
 	}//adminLogin
 	
-	public Boolean adminPassChk(AdminLoginVO alVO) {
-		Boolean flag=false;
-		String id=MainDAO.getInstance().selectCurrentPass(alVO);
-		if(id!=null && !"".equals(id)) {
-			flag=true;
-		}//end if
+	public String adminPassChk(String id) {
+		String pass=MainDAO.getInstance().selectCurrentPass(id);
 		
-		return flag;
+		return pass;
 	}//adminLogin
 	
 	public Boolean adminPassModify(AdminUpdatePassVO aupVO) {
