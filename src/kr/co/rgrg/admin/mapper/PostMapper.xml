@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.rgrg.admin.post">
+	
+	<!-- 글 목록을 가져오는 일-->
+	<select id="selectPostList" parameterType="kr.co.rgrg.admin.pagination.RangeVO" resultType="kr.co.rgrg.admin.post.domain.PostListDomain">
+	</select>
+	
+	<!-- 글 상세내용을 가져오는 일-->
+	<select id="selectPostDetail" parameterType="int" resultType="kr.co.rgrg.admin.post.domain.PostDetailDomain">
+	</select>
+	
+	<!-- 글 상세내용의 댓글을 가져오는 일-->
+	<select id="selectComment" parameterType="kr.co.rgrg.admin.pagination.RangeVO" resultType="kr.co.rgrg.admin.post.domain.CommentDomain">
+	</select>
+	
+	<!-- 글을 삭제하는 일-->
+	<delete id="deletePost" parameterType="int">
+	</delete>
+	
+	<!-- 댓글을 삭제하는 일-->
+	<delete id="deleteComment" parameterType="int">
+	</delete>
+	
+</mapper>
