@@ -24,4 +24,11 @@
 		where id=#{ id }
 	</update>
 	
+	
+	<!-- 	관리자 : 회원관리 (모든 회원 조회) -->
+	<select id="selectUserList" resultType="kr.co.rgrg.admin.user.domain.UserListDomain">
+		select id, auth_email, platform
+		from member
+	</select>
+	
 </mapper>
