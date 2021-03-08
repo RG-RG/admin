@@ -7,20 +7,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-if(${ not empty sessionScope.id }){
-	location.href="post_list.do";
+if(${ empty sessionScope.id }){
+	alert("로그인 후 이용해 주세요.");
+	location.href="index.do";
 }//end if
 
-if(${ not empty login_fail}){
-	alert("아이디나 비밀번호를 확인해주세요.");
-}//end if
-
-if(${ not empty modify_fail}){
-	alert("요청 처리 중 문제가 발생하였습니다. 다시 시도해 주세요.");
-}//end if
-
-if(${ not empty modify_success}){
-	alert("비밀번호 변경을 완료했습니다. 로그인 후 이용해 주세요.");
+if(${ not empty check_fail}){
+	alert("현재 비밀번호를 확인해주세요.");
+	location.href="pass_chk_frm.do";
 }//end if
 
 </script>
@@ -29,13 +23,13 @@ if(${ not empty modify_success}){
 .logo-div {text-align: center; padding: 50px;}
 
 .frm_div {display: flex; justify-content: center;}
-.login-frm { width: 25%;}
+.pass-modify-frm { width: 25%;}
 
 .text-div{margin-bottom: 1rem; display: flex; justify-content:space-between;}
 .text-label{padding-top:10px;}
 .text-box{padding: 0px; display: flex; justify-content: flex-end; width: 75%}
 
-#loginBtn {background-color: #0F4C81; border: 1px solid #17462B; color:#fff}
+#modifyBtn {background-color: #0F4C81; border: 1px solid #17462B; color:#fff}
 </style>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -57,21 +51,26 @@ function enterkey() {
 
 
 //로그인 시도
-function try_login(){
+function try_modify(){
 	//id 유효성검사
-	if($("#admin_id").val().trim().length == 0) {
-		alert("아이디를 입력해주세요.");
-		$("#admin_id").focus();
+	if($("#new_pass").val().trim().length == 0) {
+		alert("새 비밀번호를 입력해주세요.");
+		$("#new_pass").focus();
 		return;
 	}
 	//pass 유효성 검사
-	if($("#admin_pass").val().trim().length == 0) {
-		alert("비밀번호를 입력해주세요.");
-		$("#admin_pass").focus();
+	if($("#new_pass_chk").val().trim().length == 0) {
+		alert("새 비밀번호를 한번 더 입력해주세요.");
+		$("#new_pass_chk").focus();
 		return;
 	}
 	
-	$("#loginFrm").submit();
+	if($("#new_pass").val()!=$("#new_pass_chk").val()){
+		alert("입력하신 비밀번호가 다릅니다. 다시 입력해주세요.");
+		return;
+	}
+	
+	$("#passModifyFrm").submit();
 }//try_login
 
 </script>
@@ -82,21 +81,21 @@ function try_login(){
 		<!-- <img src="common/images/logo_green.png"/> -->
 	</div>
 	<div class="frm_div">
-		<form id="loginFrm" action="login.do" method="post" class="login-frm">
+		<form id="passModifyFrm" action="modify_pass.do" method="post" class="pass-modify-frm">
 			<div class="text-div">
-				<label class="text-label">아이디</label>
+				<label class="text-label">새 비밀번호</label>
 			    <div class="text-box">
-					<input type="text" name="id" id="admin_id" class="form-control"/>
+					<input type="password" name="pass" id="new_pass" class="form-control"/>
 			    </div>
 			</div>
 			<div class="text-div">
-				<label class="text-label">비밀번호</label>
+				<label class="text-label">새 비밀번호 확인</label>
 			    <div class="text-box">
-					<input type="password" name="pass" id="admin_pass" class="form-control" onkeyup="enterkey()"/>
+					<input type="password" name="pass_chk" id="new_pass_chk" class="form-control" onkeyup="enterkey()"/>
 			    </div>
 			</div>
 			<div>
-				<input type="button" value="LOGIN" id="loginBtn" class="form-control" onclick="try_login()"/>
+				<input type="button" value="변경" id="modifyBtn" class="form-control" onclick="try_modify()"/>
 			</div>
 		</form>
 	</div>

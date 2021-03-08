@@ -7,20 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-if(${ not empty sessionScope.id }){
+if(${ empty sessionScope.id }){
+	alert("로그인 후 이용해 주세요");
 	location.href="post_list.do";
-}//end if
-
-if(${ not empty login_fail}){
-	alert("아이디나 비밀번호를 확인해주세요.");
-}//end if
-
-if(${ not empty modify_fail}){
-	alert("요청 처리 중 문제가 발생하였습니다. 다시 시도해 주세요.");
-}//end if
-
-if(${ not empty modify_success}){
-	alert("비밀번호 변경을 완료했습니다. 로그인 후 이용해 주세요.");
 }//end if
 
 </script>
@@ -29,13 +18,13 @@ if(${ not empty modify_success}){
 .logo-div {text-align: center; padding: 50px;}
 
 .frm_div {display: flex; justify-content: center;}
-.login-frm { width: 25%;}
+.check-frm { width: 35%; }
 
 .text-div{margin-bottom: 1rem; display: flex; justify-content:space-between;}
 .text-label{padding-top:10px;}
 .text-box{padding: 0px; display: flex; justify-content: flex-end; width: 75%}
 
-#loginBtn {background-color: #0F4C81; border: 1px solid #17462B; color:#fff}
+#checkBtn {background-color: #0F4C81; border: 1px solid #17462B; color:#fff}
 </style>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -57,46 +46,38 @@ function enterkey() {
 
 
 //로그인 시도
-function try_login(){
-	//id 유효성검사
-	if($("#admin_id").val().trim().length == 0) {
-		alert("아이디를 입력해주세요.");
-		$("#admin_id").focus();
-		return;
-	}
+function try_check(){
+
 	//pass 유효성 검사
-	if($("#admin_pass").val().trim().length == 0) {
-		alert("비밀번호를 입력해주세요.");
-		$("#admin_pass").focus();
+	if($("#cur_pass").val().trim().length == 0) {
+		alert("현재 비밀번호를 입력해주세요.");
+		$("#cur_pass").focus();
 		return;
-	}
+	}//end if
 	
-	$("#loginFrm").submit();
+	$("#passChkFrm").submit();
 }//try_login
 
 </script>
 </head>
 <body>
+<c:if test="${ not empty login_fail }">
+</c:if>
 <div id="container">
 	<div class="logo-div">
 		<!-- <img src="common/images/logo_green.png"/> -->
 	</div>
 	<div class="frm_div">
-		<form id="loginFrm" action="login.do" method="post" class="login-frm">
+		<form id="passChkFrm" action="pass_chk.do" method="post" class="check-frm">
+			<input type="hidden" id="hid"/>
 			<div class="text-div">
-				<label class="text-label">아이디</label>
+				<label class="text-label">현재 비밀번호 확인</label><br/>
 			    <div class="text-box">
-					<input type="text" name="id" id="admin_id" class="form-control"/>
-			    </div>
-			</div>
-			<div class="text-div">
-				<label class="text-label">비밀번호</label>
-			    <div class="text-box">
-					<input type="password" name="pass" id="admin_pass" class="form-control" onkeyup="enterkey()"/>
+					<input type="password" name="pass" id="cur_pass" class="form-control" onkeyup="enterkey()"/>
 			    </div>
 			</div>
 			<div>
-				<input type="button" value="LOGIN" id="loginBtn" class="form-control" onclick="try_login()"/>
+				<input type="button" value="확인" id="checkBtn" class="form-control" onclick="try_check()"/>
 			</div>
 		</form>
 	</div>

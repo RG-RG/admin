@@ -9,4 +9,17 @@
 		from admin
 		where id=#{ id } and pass=#{ pass }
 	</select>
+	
+	<select id="selectCurrentPassId" parameterType="kr.co.rgrg.admin.main.vo.AdminLoginVO" resultType="String">
+	 	select id
+		from admin
+		where id=#{ id } and pass=#{ pass }
+	</select>
+	
+	<update id="updateAdminPass" parameterType="kr.co.rgrg.admin.main.vo.AdminUpdatePassVO">
+	 	update admin
+		set  pass=#{ pass }
+		where id=#{ id }
+	</update>
+	
 </mapper>
