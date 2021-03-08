@@ -12,6 +12,11 @@
         </ul>
         <ul>
             <li class="cate">설정</li>
-            <li class="cate">로그인</li>
+    		<c:if test="${ empty sessionScope.id }">
+				<li class="cate"><a href="index.do">로그인</a></li>
+			</c:if>
+			<c:if test="${ not empty sessionScope.id }">
+				<li class="cate"><a href="logout.do">로그아웃</a></li>
+			</c:if>
         </ul>
     </section>
