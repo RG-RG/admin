@@ -20,5 +20,6 @@
   <mappers>
     <mapper resource="kr/co/rgrg/admin/mapper/MainMapper.xml"/>
     <mapper resource="kr/co/rgrg/admin/mapper/PaginationMapper.xml"/>
+    <mapper resource="kr/co/rgrg/admin/mapper/PostMapper.xml"/>
   </mappers>
 </configuration>
