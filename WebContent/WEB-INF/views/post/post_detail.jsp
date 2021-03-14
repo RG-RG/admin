@@ -17,15 +17,12 @@ if(${ empty sessionScope.id }){
 </script>
 <style type="text/css">
 /* tr { display: -ms-grid; display: grid; -ms-grid-columns: 1fr 3fr 5fr 2fr; grid-template-columns: 1fr 3fr 5fr 2fr; height: 3.5rem } */
-tr:nth-child(even) { background-color: #f5f5f5 }
-tr:hover{ background-color: #ffdbd0 }
-#container{ width: 80rem; margin: 0 auto }
-#postNumTh{ width: 10rem }
-#idTh{ width: 10rem }
-#dateTh{ width: 15rem }
-#postTitleTh{ width: 30rem }
-#postManageTh{ width: 15rem }
-.btn-dark{ font-size: 1.2rem !important }
+#container{ width: 70rem; margin: 0 auto; margin-top: 10rem }
+#containerTitle{ display: inline; margin-right: 1rem }
+#moveBtn, #postDelBtn { font-size: 1.5rem !important; margin-left: 1rem; margin-bottom: 1.5rem }
+.nameTd{ width: 15rem; border: 1px solid #333 }
+.valueTd{ width: 55rem; text-align: left; border: 1px solid #333 }
+#commDelBtn{ font-size: 1.2rem !important }
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -52,41 +49,39 @@ function viewDetail(post_num){
 	
 	<section class="section_main">
 	<div id="container">
-		<h1>글 관리</h1>
+		<h1 id="containerTitle">글 상세보기</h1>
+		<button type="button" class="btn btn-dark" id="moveBtn" onclick="viewDetail('${ pl.post_num }');">글 보러가기</button>
+		<button type="button" class="btn btn-dark" id="postDelBtn" onclick="viewDetail('${ pl.post_num }');">글 삭제하기</button>
 		<div id="containerContent">
-			<table class="table table-hover user_table">
-			  <thead>
-			    <tr style="background-color: #e8e8e8; font-weight: 600">
-			      <th scope="col" id="postNumTh">글 번호</th>
-			      <th scope="col" id="idTh">아이디</th>
-			      <th scope="col" id="postTitleTh">제목</th>
-			      <th scope="col" id="dateTh">작성일</th>
-			      <th scope="col" id="postManageTh">글 관리</th>
-			    </tr>
-			  </thead>
+			<table class="table user_table">
 			  <tbody>
-			    <c:forEach var="pl" items="${ post_list }">
-				    <tr>
-				      <td>${ pl.post_num }</td>
-				      <td>${ pl.id }</td>
-					  <td>${ pl.post_title }</td>
-				      <td>
-				      	<fmt:parseDate var="originalDate" value="${ pl.input_date }" pattern="yyyy-MM-dd HH:mm:ss.SSS"/>
-				      	<fmt:formatDate var="date" value="${ originalDate }" pattern="yyyy-MM-dd"/>
-				      	${ date }
-				      </td>
-				      <td>
-				      	<c:if test="${ pl.delete_flag eq 'F' }">
-				      		<button type="button" class="btn btn-dark" onclick="viewDetail('${ pl.post_num }');">상세보기</button>
-				      	</c:if>
-				      	<c:if test="${ pl.delete_flag eq 'T' }">
-				      		삭제된 글입니다.
-				      	</c:if>
-					  </td>
-				    </tr>
-			    </c:forEach>
+			    <tr>
+			      <td class="nameTd">글 번호</td>
+			      <td class="valueTd">${ post_detail.post_num }</td>
+			    </tr>
+			    <tr>
+			      <td class="nameTd">아이디</td>
+			      <td class="valueTd">${ post_detail.id }</td>
+			    </tr>
+			    <tr>
+			      <td class="nameTd">제목</td>
+				  <td class="valueTd">${ post_detail.post_title }</td>
+			    </tr>
+			    <tr>
+			      <td class="nameTd">작성일</td>
+			      <td class="valueTd">
+			      	<fmt:parseDate var="originalDate" value="${ post_detail.input_date }" pattern="yyyy-MM-dd HH:mm:ss.SSS"/>
+			      	<fmt:formatDate var="date" value="${ originalDate }" pattern="yyyy-MM-dd"/>
+			      	${ date }
+			      </td>
+			    </tr>
+			    <tr>
+			      <td class="nameTd">내용</td>
+			      <td class="valueTd">${ post_detail.post_content }</td>
+			    </tr>
 			  </tbody>
 			</table>
+			<c:import url="/comment_list.do"/>
 		</div>
 	</div>
 	</section>
