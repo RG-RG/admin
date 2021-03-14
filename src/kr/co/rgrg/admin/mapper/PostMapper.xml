@@ -4,22 +4,40 @@
 	
 	<!-- 글 목록을 가져오는 일-->
 	<select id="selectPostList" parameterType="kr.co.rgrg.admin.pagination.RangeVO" resultType="kr.co.rgrg.admin.post.domain.PostListDomain">
+		select POST_NUM, ID, INPUT_DATE, POST_TITLE, DELETE_FLAG
+		from (select POST_NUM, ID, INPUT_DATE, POST_TITLE, DELETE_FLAG, row_number() over(order by INPUT_DATE desc) rnum
+				from POST)
+		where rnum between #{ start_num } and #{ end_num }
 	</select>
 	
 	<!-- 글 상세내용을 가져오는 일-->
 	<select id="selectPostDetail" parameterType="int" resultType="kr.co.rgrg.admin.post.domain.PostDetailDomain">
+		select POST_NUM, ID, INPUT_DATE, POST_TITLE, POST_CONTENT
+		from POST
+		where POST_NUM = #{ post_num }
 	</select>
 	
 	<!-- 글 상세내용의 댓글을 가져오는 일-->
 	<select id="selectComment" parameterType="kr.co.rgrg.admin.pagination.RangeVO" resultType="kr.co.rgrg.admin.post.domain.CommentDomain">
+		select COMM_NUM, ID, COMM_CONTENT, INPUT_DATE, DELETE_FLAG
+		from (select COMM_NUM, ID, COMM_CONTENT, INPUT_DATE, DELETE_FLAG, row_number() over(order by INPUT_DATE) rnum
+					from COMM
+					where POST_NUM = #{ column_value })
+		where rnum between #{ start_num } and #{ end_num }
 	</select>
 	
 	<!-- 글을 삭제하는 일-->
-	<delete id="deletePost" parameterType="int">
-	</delete>
+	<update id="updatePostDelete" parameterType="int">
+		update POST
+		set POST_TITLE = '', POST_CONTENT = '', VIEW_CNT = null, THUMBNAIL = '', PUBLISH_FLAG = '', HIDDEN_FLAG = '', DELETE_FLAG = 'T'
+		where POST_NUM = { #post_num }
+	</update>
 	
 	<!-- 댓글을 삭제하는 일-->
-	<delete id="deleteComment" parameterType="int">
-	</delete>
+	<update id="updateCommentDelete" parameterType="int">
+		update COMM
+		set COMM_CONTENT = '', DELETE_FLAG = 'T'
+		where COMM_NUM = { #comm_num }
+	</update>
 	
 </mapper>

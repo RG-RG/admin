@@ -2,6 +2,9 @@ package kr.co.rgrg.admin.post.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+
+import kr.co.rgrg.admin.dao.GetRgrgHandler;
 import kr.co.rgrg.admin.pagination.RangeVO;
 import kr.co.rgrg.admin.post.domain.CommentDomain;
 import kr.co.rgrg.admin.post.domain.PostDetailDomain;
@@ -28,6 +31,11 @@ public class PostDAO {
 	 */
 	public List<PostListDomain> selectPostList(RangeVO rVO){
 		List<PostListDomain> list = null;
+		
+		SqlSession ss = GetRgrgHandler.getInstance().getSqlSession();
+		list = ss.selectList("kr.co.rgrg.admin.post.selectPostList", rVO);
+		ss.close();
+		
 		return list;
 	}//selectPostList
 	
@@ -36,9 +44,14 @@ public class PostDAO {
 	 * @param post_num
 	 * @return
 	 */
-	public List<PostDetailDomain> selectPostDetail(int post_num){
-		List<PostDetailDomain> list = null;
-		return list;
+	public PostDetailDomain selectPostDetail(int post_num){
+		PostDetailDomain pdd = null;
+		
+		SqlSession ss = GetRgrgHandler.getInstance().getSqlSession();
+		pdd = ss.selectOne("kr.co.rgrg.admin.post.selectPostDetail", post_num);
+		ss.close();
+		
+		return pdd;
 	}//selectPostDetail
 	
 	/**
@@ -48,6 +61,11 @@ public class PostDAO {
 	 */
 	public List<CommentDomain> selectComment(RangeVO rVO){
 		List<CommentDomain> list = null;
+		
+		SqlSession ss = GetRgrgHandler.getInstance().getSqlSession();
+		list = ss.selectList("kr.co.rgrg.admin.post.selectComment", rVO);
+		ss.close();
+		
 		return list;
 	}//selectComment
 	
@@ -58,6 +76,12 @@ public class PostDAO {
 	 */
 	public int deletePost(int post_num){
 		int cnt = 0;
+		
+		SqlSession ss = GetRgrgHandler.getInstance().getSqlSession();
+		cnt = ss.update("kr.co.rgrg.admin.post.updatePostDelete", post_num);
+		ss.commit();
+		ss.close();
+		
 		return cnt;
 	}//deletePost
 	
@@ -68,6 +92,12 @@ public class PostDAO {
 	 */
 	public int deleteComment(int comm_num) {
 		int cnt = 0;
+		
+		SqlSession ss = GetRgrgHandler.getInstance().getSqlSession();
+		cnt = ss.update("kr.co.rgrg.admin.post.updateCommentDelete", comm_num);
+		ss.commit();
+		ss.close();
+		
 		return cnt;
 	}//deleteComment
 	
