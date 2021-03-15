@@ -80,6 +80,8 @@ body {
     font-weight: 600
 }
 
+
+
 @media (min-width:901px) {
     .section_main {
         max-width: 90%;

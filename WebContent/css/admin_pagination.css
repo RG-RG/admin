@@ -1,0 +1,33 @@
+@charset "EUC-KR";
+
+/* pagination */
+nav {
+	margin-top: 5rem;
+	font-weight: 600;
+}
+
+nav .pagination {
+	display: flex;
+	justify-content: center;
+	font-size: 1.5rem;
+}
+
+nav li {
+	
+	margin: 0 .5rem;
+}
+
+nav a {
+	padding : calc(1rem - 5px) 1rem;
+}
+
+nav .now_page {
+	background-color: black;
+	color: white;
+	border-radius: 50%;
+}
+
+nav .active {
+	cursor: pointer;
+}
+/* pagination end */

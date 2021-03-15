@@ -25,10 +25,16 @@
 	</update>
 	
 	
-	<!-- 	관리자 : 회원관리 (모든 회원 조회) -->
-	<select id="selectUserList" resultType="kr.co.rgrg.admin.user.domain.UserListDomain">
-		select id, auth_email, platform
-		from member
-	</select>
+   <!--    관리자 : 회원관리 (모든 회원 조회) -->
+   <select id="selectUserList" 
+   parameterType="kr.co.rgrg.admin.pagination.RangeVO"
+   resultType="kr.co.rgrg.admin.user.domain.UserListDomain">      
+      select id, auth_email, platform
+      from (
+         select id, auth_email, platform, row_number() over(order by input_date desc) rnum
+         from member
+      )
+      where rnum between #{ start_num } and #{ end_num }
+   </select>
 	
 </mapper>

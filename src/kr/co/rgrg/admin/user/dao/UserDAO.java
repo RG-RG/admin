@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import kr.co.rgrg.admin.dao.GetRgrgHandler;
 import kr.co.rgrg.admin.user.domain.UserListDomain;
+import kr.co.rgrg.admin.pagination.RangeVO;
 
 public class UserDAO {
 	private static UserDAO uDAO;
@@ -28,11 +29,11 @@ public class UserDAO {
 	 * 회원 정보를 전부 조회함(관리자용)
 	 * @return
 	 */
-	public List<UserListDomain> selectUserList() {
+	public List<UserListDomain> selectUserList(RangeVO rVO) {
 		List<UserListDomain> userList = null;
 		
 		SqlSession ss = GetRgrgHandler.getInstance().getSqlSession();
-		userList = ss.selectList("kr.co.rgrg.admin.main.selectUserList");
+		userList = ss.selectList("kr.co.rgrg.admin.main.selectUserList", rVO);
 		ss.close();
 
 		return userList;

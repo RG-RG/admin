@@ -21,7 +21,7 @@ public class PaginationService {
 	 * @return
 	 */
 	public int pageScale() {
-		int page_scale=10;
+		int page_scale=1;
 		
 		return page_scale;
 	}//pageScale
@@ -142,7 +142,7 @@ public class PaginationService {
 			.append(")'"); 
 		}//end if
 		view.append(" aria-label='Previous'>\n")
-		.append("<span aria-hidden='true'>&laquo;</span>\n")
+		.append("<span aria-hidden='true'><i class=\"fas fa-chevron-left\"></i></span>\n")
 		.append("</a>\n")
 		.append("</li>\n");
 		
@@ -155,13 +155,14 @@ public class PaginationService {
 			}
 			view.append("\">");
 			
-			view.append("<a class='page-link'");
+			view.append("<a class='page-link");
 			if( pVO.getCurrent_page() != i) {
-				view.append(" onclick='movePage(")
+				view.append("' onclick='movePage(")
 				.append(i)
 				.append(")'"); 
 			}else {
-				view.append(" style='background-color:#77AF9C; border-color:#77AF9C; color:#fff'");
+				//view.append(" style='background-color:#77AF9C; border-color:#77AF9C; color:#fff'");
+				view.append(" now_page'");
 			}//end else
 			view.append(">\n")
 			.append(i)
@@ -182,7 +183,7 @@ public class PaginationService {
 			.append(")'"); 
 		}//end if
 		view.append(" aria-label='Next'>\n")
-		.append("<span aria-hidden='true'>&raquo;</span>\n")
+		.append("<span aria-hidden='true'><i class=\"fas fa-chevron-right\"></i></span>\n")
 		.append("</a>\n")
 		.append("</li>\n")
 		.append("</ul>\n")

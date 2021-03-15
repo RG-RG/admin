@@ -12,10 +12,17 @@
 	location.href="index.do";
 }//end if */
 
+	//pagination
+	function movePage(page) {
+		location.href="user_list.do?param_page="+page;
+	}
+
 </script>
 
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/admin_user_manage.css">
+<link rel="stylesheet" href="css/admin_pagination.css">
 
 </head>
 <body>
@@ -42,8 +49,9 @@
 	                <span>${ user.platform }</span>
             	</li>
             </c:forEach>
-            
         </ul>
+        
+		<c:out value="${ pagination_view }" escapeXml="false"/>
     </section>
 </body>
 </html>
