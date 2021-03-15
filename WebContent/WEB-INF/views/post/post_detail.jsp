@@ -16,13 +16,22 @@ if(${ empty sessionScope.id }){
 
 </script>
 <style type="text/css">
-/* tr { display: -ms-grid; display: grid; -ms-grid-columns: 1fr 3fr 5fr 2fr; grid-template-columns: 1fr 3fr 5fr 2fr; height: 3.5rem } */
-#container{ width: 70rem; margin: 0 auto; margin-top: 10rem }
+#container{ width: 70rem; margin: 0 auto; margin-top: 10rem; min-height: 180rem }
 #containerTitle{ display: inline; margin-right: 1rem }
 #moveBtn, #postDelBtn { font-size: 1.5rem !important; margin-left: 1rem; margin-bottom: 1.5rem }
-.nameTd{ width: 15rem; border: 1px solid #333 }
-.valueTd{ width: 55rem; text-align: left; border: 1px solid #333 }
+.nameTd{ width: 15rem; border: 1px solid #bbb; background-color: #f5f5f5 !important; font-weight: bold; vertical-align: middle; }
+.valueTd{ width: 55rem; text-align: left; border: 1px solid #bbb; padding-left: 2.5rem !important; padding-right: 2.5rem !important }
+#postContent{ resize: none; background-color: #FFFFFF; width: 100%; vertical-align: middle; height: 30rem; border: 0 }
+#commTable{ border: 1px solid #bbb }
+#nameTr{ background-color: #e8e8e8; font-weight: 600 }
+#commNumTh{ width: 8rem }
+#idTh{ width: 10rem }
+#commContentTh{ width: 22rem }
+#dateTh{ width: 10rem }
+#commManageTh{ width: 15rem }
 #commDelBtn{ font-size: 1.2rem !important }
+#pagination{ margin-top: 5rem }
+.page-link{ cursor: pointer; }
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -30,17 +39,26 @@ if(${ empty sessionScope.id }){
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="css/admin_post_manage.css">
+<link rel="stylesheet" href="css/admin_user_manage.css">
+<link rel="stylesheet" href="css/admin_pagination.css">
 
 <script type="text/javascript">
 $(function(){
 	
 });//ready
 
-function viewDetail(post_num){
-	location.href="post_detail.do?post_num="+post_num;
+function removePost(){
+	if (confirm("글을 삭제하시겠습니까?")){
+		$("#removePostFrm").submit();
+	}//end if
+}//removePost
+
+function viewPost(id, post_num){
+	location.href="/rgrg_user/rgrg/"+id+"/blog/post/"+post_num;
 }//viewDetail
+
 </script>
 </head>
 <body>
@@ -50,8 +68,12 @@ function viewDetail(post_num){
 	<section class="section_main">
 	<div id="container">
 		<h1 id="containerTitle">글 상세보기</h1>
-		<button type="button" class="btn btn-dark" id="moveBtn" onclick="viewDetail('${ pl.post_num }');">글 보러가기</button>
-		<button type="button" class="btn btn-dark" id="postDelBtn" onclick="viewDetail('${ pl.post_num }');">글 삭제하기</button>
+		<button type="button" class="btn btn-dark" id="moveBtn" onclick="viewPost('${ post_detail.id }', '${ post_detail.post_num }');">글 보러가기</button>
+		<button type="button" class="btn btn-dark" id="postDelBtn" onclick="removePost();">글 삭제하기</button>
+		<form id="removePostFrm" action="remove_post.do" method="POST">
+			<input type="hidden" name="post_page" value="${ param.post_page }"/>
+			<input type="hidden" name="post_num" value="${ post_detail.post_num }"/>
+		</form>
 		<div id="containerContent">
 			<table class="table user_table">
 			  <tbody>
@@ -77,7 +99,7 @@ function viewDetail(post_num){
 			    </tr>
 			    <tr>
 			      <td class="nameTd">내용</td>
-			      <td class="valueTd">${ post_detail.post_content }</td>
+			      <td class="valueTd"><textarea id="postContent" readonly="readonly" disabled="disabled">${ post_detail.post_content }</textarea></td>
 			    </tr>
 			  </tbody>
 			</table>

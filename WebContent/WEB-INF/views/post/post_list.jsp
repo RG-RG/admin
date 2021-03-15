@@ -16,16 +16,18 @@ if(${ empty sessionScope.id }){
 
 </script>
 <style type="text/css">
-/* tr { display: -ms-grid; display: grid; -ms-grid-columns: 1fr 3fr 5fr 2fr; grid-template-columns: 1fr 3fr 5fr 2fr; height: 3.5rem } */
 tr:nth-child(even) { background-color: #f5f5f5 }
 tr:hover{ background-color: #ffdbd0 }
+table { table-layout: fixed; word-break:break-all }
 #container{ width: 80rem; margin: 0 auto }
 #postNumTh{ width: 10rem }
-#idTh{ width: 10rem }
-#dateTh{ width: 15rem }
+#idTh{ width: 12rem }
+#dateTh{ width: 13rem }
 #postTitleTh{ width: 30rem }
 #postManageTh{ width: 15rem }
 .btn-dark{ font-size: 1.2rem !important }
+#pagination{ margin-top: 5rem }
+.page-link{ cursor: pointer; }
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -33,17 +35,27 @@ tr:hover{ background-color: #ffdbd0 }
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="css/admin_post_manage.css">
+<link rel="stylesheet" href="css/admin_user_manage.css">
+<link rel="stylesheet" href="css/admin_pagination.css">
 
 <script type="text/javascript">
 $(function(){
 	
 });//ready
 
-function viewDetail(post_num){
-	location.href="post_detail.do?post_num="+post_num;
+function viewDetail(post_page, post_num){
+	if (post_page == ''){
+		post_page = 1;
+	}//end if
+	location.href="post_detail.do?post_page="+post_page+"&post_num="+post_num;
 }//viewDetail
+
+function movePage(post_page){
+	location.href = "post_list.do?post_page="+post_page;
+}//movePage
+
 </script>
 </head>
 <body>
@@ -65,11 +77,13 @@ function viewDetail(post_num){
 			    </tr>
 			  </thead>
 			  <tbody>
+			  <c:if test="${ post_list ne null }">
 			    <c:forEach var="pl" items="${ post_list }">
 				    <tr>
 				      <td>${ pl.post_num }</td>
 				      <td>${ pl.id }</td>
-					  <td>${ pl.post_title }</td>
+					  <c:set var="post_title" value="${ pl.post_title }" />
+					  <td>${ fn:substring(post_title, 0, 20) }</td>
 				      <td>
 				      	<fmt:parseDate var="originalDate" value="${ pl.input_date }" pattern="yyyy-MM-dd HH:mm:ss.SSS"/>
 				      	<fmt:formatDate var="date" value="${ originalDate }" pattern="yyyy-MM-dd"/>
@@ -77,7 +91,7 @@ function viewDetail(post_num){
 				      </td>
 				      <td>
 				      	<c:if test="${ pl.delete_flag eq 'F' }">
-				      		<button type="button" class="btn btn-dark" onclick="viewDetail('${ pl.post_num }');">상세보기</button>
+				      		<button type="button" class="btn btn-dark" onclick="viewDetail('${ param.post_page }','${ pl.post_num }');">상세보기</button>
 				      	</c:if>
 				      	<c:if test="${ pl.delete_flag eq 'T' }">
 				      		삭제된 글입니다.
@@ -85,8 +99,19 @@ function viewDetail(post_num){
 					  </td>
 				    </tr>
 			    </c:forEach>
+			  </c:if>
 			  </tbody>
+			  <c:if test="${ post_list eq '[]' }">
+			  	<tbody>
+				  	<tr><td colspan="5">작성된 글이 없습니다.</td></tr>
+			  	</tbody>
+			  </c:if>
 			</table>
+			<c:if test="${ post_list ne '[]' }">
+			<div id="pagination">
+				<c:out value="${ pagination }" escapeXml="false"/>
+			</div>
+			</c:if>
 		</div>
 	</div>
 	</section>

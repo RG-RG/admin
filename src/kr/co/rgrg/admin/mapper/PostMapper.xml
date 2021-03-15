@@ -30,14 +30,14 @@
 	<update id="updatePostDelete" parameterType="int">
 		update POST
 		set POST_TITLE = '', POST_CONTENT = '', VIEW_CNT = null, THUMBNAIL = '', PUBLISH_FLAG = '', HIDDEN_FLAG = '', DELETE_FLAG = 'T'
-		where POST_NUM = { #post_num }
+		where POST_NUM = #{ post_num }
 	</update>
 	
 	<!-- 댓글을 삭제하는 일-->
 	<update id="updateCommentDelete" parameterType="int">
 		update COMM
 		set COMM_CONTENT = '', DELETE_FLAG = 'T'
-		where COMM_NUM = { #comm_num }
+		where COMM_NUM = #{ comm_num }
 	</update>
 	
 </mapper>
