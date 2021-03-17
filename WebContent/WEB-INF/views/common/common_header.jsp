@@ -5,13 +5,13 @@
 
     <section class="section_header">
         <ul>
-            <li class="logo">GLOG</li>
+            <li class="logo">co-doing</li>
             <li class="cate"><a href="post_list.do">글 관리</a></li>
             <li class="cate"><a href="user_list.do">회원 관리</a></li>
             <li class="cate">통계 관리</li>
         </ul>
         <ul>
-            <li class="cate">설정</li>
+            <li class="cate"><a href="pass_chk_frm.do">설정</a></li>
     		<c:if test="${ empty sessionScope.id }">
 				<li class="cate"><a href="index.do">로그인</a></li>
 			</c:if>
