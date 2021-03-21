@@ -22,6 +22,7 @@
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/admin_user_manage.css">
+<link rel="stylesheet" href="css/admin_common_header.css">
 <link rel="stylesheet" href="css/admin_pagination.css">
 
 </head>
