@@ -43,6 +43,7 @@ if(${ empty sessionScope.id }){
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/admin_user_manage.css">
 <link rel="stylesheet" href="css/admin_pagination.css">
+<link rel="stylesheet" href="css/admin_common_header.css">
 
 <script type="text/javascript">
 $(function(){
