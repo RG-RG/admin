@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.rgrg.admin.analytics">
+
+	<select id="selectMostLikeList" resultType="kr.co.rgrg.admin.analytics.domain.MostLikePost">
+	 	select post.post_num, post.post_title, post.id, like_cnt, view_cnt
+		from POST, (select count(post_num) as like_cnt from like_post)
+		where delete_flag = 'F' and 5 >= rownum
+		order by like_cnt desc; 
+	</select>
+	
+</mapper>
