@@ -22,7 +22,7 @@ public class AnalyticsController {
 			model.addAttribute("like_list", new AnalyticsService().searchMostLikeList());
 		}
 		
-		return "analytics";
+		return "analytics/analytics";
 	}
 	
 }//class
