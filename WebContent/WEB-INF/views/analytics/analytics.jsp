@@ -44,10 +44,10 @@
             <c:forEach items="${ like_list }" var="post" varStatus="status">
             <li>
                 <span>${ status.count }</span>
-                <span>${ like_list.post_title }</span>
-                <span>${ like_list.id }</span>
-                <span>${ like_list.view_cnt }</span>
-                <span>${ like_list.like_cnt }</span>
+                <span>${ post.post_title }</span>
+                <span>${ post.id }</span>
+                <span>${ post.view_cnt }</span>
+                <span>${ post.like_cnt }</span>
             </li>
 			</c:forEach>
         </ul>
