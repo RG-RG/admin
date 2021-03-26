@@ -8,7 +8,7 @@
 	 	select post.post_num, post.post_title, post.id, like_cnt, view_cnt
 		from POST, (select count(post_num) as like_cnt from like_post)
 		where delete_flag = 'F' and 5 >= rownum
-		order by like_cnt desc; 
+		order by like_cnt desc
 	</select>
 	
 </mapper>
