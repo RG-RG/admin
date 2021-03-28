@@ -5,18 +5,10 @@ package kr.co.rgrg.admin.analytics.domain;
  *
  */
 public class MostLikePost {
-	String post_num, post_title, id, like_cnt, view_cnt;
+	String post_num, post_title, id, like_cnt;
 
 	public String getPost_num() {
 		return post_num;
-	}
-
-	public String getView_cnt() {
-		return view_cnt;
-	}
-
-	public void setView_cnt(String view_cnt) {
-		this.view_cnt = view_cnt;
 	}
 
 	public void setPost_num(String post_num) {

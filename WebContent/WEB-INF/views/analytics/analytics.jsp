@@ -37,7 +37,6 @@
                 <span>No.</span>
                 <span>제목</span>
                 <span>작성자</span>
-                <span>조회수</span>
                 <span>좋아요</span>
             </li>
             <!-- 데이터 넣을 때엔 여기서부터 li하나씩 foreach 하면 돼용 -->
@@ -46,7 +45,6 @@
                 <span>${ status.count }</span>
                 <span>${ post.post_title }</span>
                 <span>${ post.id }</span>
-                <span>${ post.view_cnt }</span>
                 <span>${ post.like_cnt }</span>
             </li>
 			</c:forEach>
