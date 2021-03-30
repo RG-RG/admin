@@ -4,8 +4,8 @@ package kr.co.rgrg.admin.analytics.domain;
  * @author doyeon
  *
  */
-public class MostLikePost {
-	String post_num, post_title, id, like_cnt;
+public class MostLikePostDomain {
+	String post_num, post_title, id, cnt;
 
 	public String getPost_num() {
 		return post_num;
@@ -31,13 +31,12 @@ public class MostLikePost {
 		this.id = id;
 	}
 
-	public String getLike_cnt() {
-		return like_cnt;
+	public String getCnt() {
+		return cnt;
 	}
 
-	public void setLike_cnt(String like_cnt) {
-		this.like_cnt = like_cnt;
+	public void setCnt(String cnt) {
+		this.cnt = cnt;
 	}
-	
 	
 }

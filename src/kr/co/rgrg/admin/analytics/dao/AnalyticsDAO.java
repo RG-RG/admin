@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import kr.co.rgrg.admin.analytics.domain.MostLikePost;
+import kr.co.rgrg.admin.analytics.domain.MostLikePostDomain;
 import kr.co.rgrg.admin.dao.GetRgrgHandler;
 import kr.co.rgrg.admin.pagination.RangeVO;
 import kr.co.rgrg.admin.post.domain.PostListDomain;
@@ -29,10 +29,10 @@ public class AnalyticsDAO {
 	 * 좋아요 순으로 게시글 리스트를 조회
 	 * @return
 	 */
-	public List<MostLikePost> selectMostLikeList() {
+	public List<MostLikePostDomain> selectMostLikeList() {
 		
 		SqlSession ss = GetRgrgHandler.getInstance().getSqlSession();
-		List<MostLikePost> list = ss.selectList("kr.co.rgrg.admin.analytics.selectMostLikeList");
+		List<MostLikePostDomain> list = ss.selectList("kr.co.rgrg.admin.analytics.selectMostLikeList");
 		ss.close();
 		
 		return list;

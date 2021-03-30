@@ -8,7 +8,7 @@
             <li class="logo">co-doing</li>
             <li class="cate"><a href="post_list.do">글 관리</a></li>
             <li class="cate"><a href="user_list.do">회원 관리</a></li>
-            <li class="cate"><a href="">통계 관리</a></li>
+            <li class="cate"><a href="analytics.do">통계 관리</a></li>
         </ul>
         <ul>
             <li class="cate"><a href="pass_chk_frm.do">설정</a></li>
