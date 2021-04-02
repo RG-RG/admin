@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 - 글 관리</title>
+<title>Co-doing</title>
 <script type="text/javascript">
 if(${ empty sessionScope.id }){
 	alert("로그인 후 이용해 주세요");
@@ -36,10 +36,12 @@ table { table-layout: fixed; word-break:break-all }
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-<link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="css/admin_user_manage.css">
-<link rel="stylesheet" href="css/admin_pagination.css">
-<link rel="stylesheet" href="css/admin_common_header.css">
+<link rel="icon" href="./images/icon/favicon.ico" />
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="stylesheet" href="./css/reset.css">
+<link rel="stylesheet" href="./css/admin_user_manage.css">
+<link rel="stylesheet" href="./css/admin_pagination.css">
+<link rel="stylesheet" href="./css/admin_common_header.css">
 
 <script type="text/javascript">
 $(function(){
