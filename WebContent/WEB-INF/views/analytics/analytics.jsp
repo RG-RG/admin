@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>관리자_유저 관리화면</title>
+    <title>Co-doing</title>
     <link rel="icon" href="./images/icon/favicon.ico" />
 	<link rel="shortcut icon" href="favicon.ico" />
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
