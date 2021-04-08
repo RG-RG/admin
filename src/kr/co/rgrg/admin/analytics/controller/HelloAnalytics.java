@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpTransport;
@@ -28,12 +31,20 @@ import com.google.api.services.analyticsreporting.v4.model.Report;
 import com.google.api.services.analyticsreporting.v4.model.ReportRequest;
 import com.google.api.services.analyticsreporting.v4.model.ReportRow;
 
+@Component
 public class HelloAnalytics {
 	private static final String APPLICATION_NAME = "Hello Analytics Reporting";
 	private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
 	static String path = HelloAnalytics.class.getResource("").getPath();
-	private static final String KEY_FILE_LOCATION = "C:\\Users\\doyeon\\git\\admin\\WebContent\\co-doing-05efd00e575b.json";
-	private static final String VIEW_ID = "239719938";
+	private static final String KEY_FILE_LOCATION = path + "../../../../../../../../key/co-doing-05efd00e575b.json";
+	
+	private static String VIEW_ID;
+//	private static String KEY_FILE_LOCATION;
+
+	@Value("${google.analytics.viewid}")
+	public void setViewId(String view_id) {
+		VIEW_ID = view_id;
+	}//setViewId
 
 	public static String getResult(String id, String startDate, String endDate, String metrics, String dimension) {
 		try {
