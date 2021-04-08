@@ -118,10 +118,6 @@
     <section class="section_main">
         <!-- h1 메인 타이틀, h2 소제목 -->
         <h1>통계 관리</h1>
-
-        <h2>가입자 수 추이</h2>
-        <!-- 표는 자리만 일단 만들어놓고.. 좀 더 봐야 할듯ㅠㅠ -->
-        <div class="graph_section"></div>
         
         <h2>전체 방문자 수 추이</h2>
         	<canvas id="siteUse"></canvas>
