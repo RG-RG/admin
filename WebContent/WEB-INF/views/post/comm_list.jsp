@@ -28,6 +28,7 @@ function removeComm(comm_num){
 			success : function(json){
 				if (json.delete_flag){
 					$("#commContent"+comm_num).html("");
+					$("#deleteFlag"+comm_num).html("삭제된 댓글입니다.");
 				}//end if
 			}//success
 		});//ajax
@@ -116,7 +117,7 @@ function movePage(page){
 				      	<fmt:formatDate var="date" value="${ originalDate }" pattern="yyyy-MM-dd"/>
 				      	${ date }
 				      </td>
-				      <td>
+				      <td id="deleteFlag${ cl.comm_num }">
 				      	<c:if test="${ cl.delete_flag eq 'F' }">
 				      		<button type="button" class="btn btn-dark" id="commDelBtn" onclick="removeComm('${ cl.comm_num }');">삭제</button>
 				      	</c:if>
