@@ -1,0 +1,63 @@
+@charset "EUC-KR";
+
+html {
+    font-family: IBMPlexSansKR-Regular;
+    font-size: 62.5%
+}
+
+#container {
+	min-height: 600px;
+    margin: 0 auto;
+    min-width: 100%;
+    font-size: 1.5rem;
+}
+
+.logo-div {
+	text-align: center;
+	padding: 50px;
+}
+
+.frm_div {
+	display: flex;
+	justify-content: center;
+}
+
+.login-frm, .pass-modify-frm {
+	width: 30rem;
+}
+
+.text-div {
+	margin-bottom: 1rem;
+	display: flex;
+	justify-content: space-between;
+}
+
+.text-label {
+	padding-top: 10px;
+	width: 15rem;
+	margin-right: 1rem;
+}
+
+.text-box {
+	padding: 0px;
+	display: flex;
+	justify-content: flex-end;
+	width: 75%
+}
+
+.form-control {
+	font-size: 1.5rem;
+}
+
+#loginBtn, 
+#modifyBtn {
+	background-color: black;
+	border: none;
+	color: #fff;
+	transition: 0.2s;
+}
+
+#loginBtn:hover {
+	background-color: 5583AC;	
+	transition: 0.2s;
+}

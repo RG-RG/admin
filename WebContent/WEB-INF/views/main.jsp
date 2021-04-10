@@ -5,40 +5,33 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Co-doing 관리자</title>
+
+<link rel="icon" href="./images/icon/favicon.ico" />
+<link rel="shortcut icon" href="favicon.ico" />
+
 <script type="text/javascript">
-if(${ not empty sessionScope.id }){
-	location.href="post_list.do";
-}//end if
-
-if(${ not empty login_fail}){
-	alert("아이디나 비밀번호를 확인해주세요.");
-}//end if
-
-if(${ not empty modify_fail}){
-	alert("요청 처리 중 문제가 발생하였습니다. 다시 시도해 주세요.");
-}//end if
-
-if(${ not empty modify_success}){
-	alert("비밀번호 변경을 완료했습니다. 로그인 후 이용해 주세요.");
-}//end if
-
+	if(${ not empty sessionScope.id }){
+		location.href="post_list.do";
+	}//end if
+	
+	if(${ not empty login_fail}){
+		alert("아이디나 비밀번호를 확인해주세요.");
+	}//end if
+	
+	if(${ not empty modify_fail}){
+		alert("요청 처리 중 문제가 발생하였습니다. 다시 시도해 주세요.");
+	}//end if
+	
+	if(${ not empty modify_success}){
+		alert("비밀번호 변경을 완료했습니다. 로그인 후 이용해 주세요.");
+	}//end if
 </script>
-<style type="text/css">
-#container{ min-height: 600px; display: flex; flex-direction: column; justify-content: center;}
-.logo-div {text-align: center; padding: 50px;}
 
-.frm_div {display: flex; justify-content: center;}
-.login-frm { width: 25%;}
-
-.text-div{margin-bottom: 1rem; display: flex; justify-content:space-between;}
-.text-label{padding-top:10px;}
-.text-box{padding: 0px; display: flex; justify-content: flex-end; width: 75%}
-
-#loginBtn {background-color: #0F4C81; border: 1px solid #17462B; color:#fff}
-</style>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/admin_login.css">
 
 <!-- Google CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -78,9 +71,11 @@ function try_login(){
 </head>
 <body>
 <div id="container">
+
 	<div class="logo-div">
-		<!-- <img src="common/images/logo_green.png"/> -->
+		<img src="images/codoing1.png"/>
 	</div>
+	
 	<div class="frm_div">
 		<form id="loginFrm" action="login.do" method="post" class="login-frm">
 			<div class="text-div">

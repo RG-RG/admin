@@ -5,12 +5,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자화면 - 회원관리</title>
+<title>Co-doing 관리자</title>
+
+<link rel="icon" href="./images/icon/favicon.ico" />
+<link rel="shortcut icon" href="favicon.ico" />
+
 <script type="text/javascript">
-/* if(${ empty sessionScope.id }){
-	alert("로그인 후 이용해 주세요");
-	location.href="index.do";
-}//end if */
+	 if(${ empty sessionScope.id }){
+		alert("로그인 후 이용해 주세요");
+		location.href="index.do";
+	}//end if
 
 	//pagination
 	function movePage(page) {
@@ -37,7 +41,7 @@
 
         <ul class="user_table">
             <li class="table_title">
-                <span>No.</span>
+                <span>회원 번호</span>
                 <span>아이디</span>
                 <span>이메일</span>
                 <span>소셜 타입</span>
@@ -47,7 +51,13 @@
 	                <span>${ status.count }</span>
 	                <span>${ user.id }</span>
 	                <span>${ user.auth_email }</span>
-	                <span>${ user.platform }</span>
+	                <c:if test="${ user.platform eq null }">
+	                	<span>탈퇴 회원</span>
+	                </c:if>
+	                <c:if test="${ user.platform ne null }">
+	                	<span>${ user.platform }</span>
+	                </c:if>
+	                
             	</li>
             </c:forEach>
         </ul>

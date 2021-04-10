@@ -8,24 +8,45 @@
     border-bottom: #e8e8e8 1px solid;
     font-size: 1.3rem;
     line-height: 2rem;
-    padding: 0 4rem
+    padding: 0 3rem
 }
 
 .section_header ul,
 body {
-    display: flex
+    display: flex;
 }
 
 .section_header ul li {
-    padding: 1rem 2rem
+    padding: 0 2rem
 }
 
 .section_header ul li:hover:not(.logo) {
     font-size: 1.5rem;
-    font-weight: 600
+    font-weight: 600;
 }
 
-.section_header ul .logo {
-    font-size: 2rem;
-    font-weight: 600
+.section_header ul img{
+    height: 4rem;
+    margin-top: 1rem;
+}
+
+a, a:visited {
+	line-height: 6rem;
+	color: black;
+}
+
+
+
+@media (min-width:901px) {
+    .section_main {
+        max-width: 90%;
+        min-width: 80rem
+    }
+}
+
+@media (min-width:1201px) {
+    .section_main {
+        max-width: 70%;
+        min-width: 80rem
+    }
 }

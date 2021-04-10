@@ -5,7 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Co-doing 관리자</title>
+
+<link rel="icon" href="./images/icon/favicon.ico" />
+<link rel="shortcut icon" href="favicon.ico" />
+
 <script type="text/javascript">
 if(${ empty sessionScope.id }){
 	alert("로그인 후 이용해 주세요.");
@@ -18,27 +22,19 @@ if(${ not empty check_fail}){
 }//end if
 
 </script>
-<style type="text/css">
-#container{ min-height: 600px; display: flex; flex-direction: column; justify-content: center;}
-.logo-div {text-align: center; padding: 50px;}
-
-.frm_div {display: flex; justify-content: center;}
-.pass-modify-frm { width: 25%;}
-
-.text-div{margin-bottom: 1rem; display: flex; justify-content:space-between;}
-.text-label{padding-top:10px;}
-.text-box{padding: 0px; display: flex; justify-content: flex-end; width: 75%}
-
-#modifyBtn {background-color: #0F4C81; border: 1px solid #17462B; color:#fff}
-</style>
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
 <!-- Google CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/admin_login.css">
+<link rel="stylesheet" href="css/admin_common_header.css">
+
 <script type="text/javascript">
 $(function() {
 });
@@ -77,8 +73,10 @@ function try_modify(){
 </head>
 <body>
 <div id="container">
+	<c:import url="../common/common_header.jsp"/>
+
 	<div class="logo-div">
-		<!-- <img src="common/images/logo_green.png"/> -->
+		<img src="images/codoing1.png"/>
 	</div>
 	<div class="frm_div">
 		<form id="passModifyFrm" action="modify_pass.do" method="post" class="pass-modify-frm">

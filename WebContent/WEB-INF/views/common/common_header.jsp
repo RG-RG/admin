@@ -5,7 +5,7 @@
 
     <section class="section_header">
         <ul>
-            <li class="logo">co-doing</li>
+            <li class="logo"><img src="images/codoing1.png"/></li>
             <li class="cate"><a href="post_list.do">글 관리</a></li>
             <li class="cate"><a href="user_list.do">회원 관리</a></li>
             <li class="cate"><a href="analytics.do">통계 관리</a></li>

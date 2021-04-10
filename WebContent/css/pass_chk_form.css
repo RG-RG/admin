@@ -1,0 +1,57 @@
+@charset "EUC-KR";
+
+* {
+    box-sizing: border-box;
+    transition: .2s
+}
+
+html {
+    font-size: 62.5%
+}
+
+#container {
+    margin: 0 auto;
+    min-width: 100%;
+    font-size: 1.5rem;
+}
+
+.logo-div {
+	text-align: center;
+	padding: 50px;
+}
+
+.frm_div {
+	display: flex;
+	justify-content: center;
+}
+
+.check-frm {
+	width: 30%;
+}
+
+.text-div {
+	margin-bottom: 1rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.text-box {
+	padding: 0px;
+	display: flex;
+	justify-content: flex-end;
+	width: 50%
+}
+
+#checkBtn {
+	background-color: black;
+	border: none;
+	color: #fff;
+	padding: .7rem 0;
+}
+
+.form-control {
+	height: auto;
+	font-size: 1.5rem;
+}
+

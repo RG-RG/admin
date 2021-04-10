@@ -7,7 +7,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Co-doing</title>
+<title>Co-doing 관리자</title>
+
+<link rel="icon" href="./images/icon/favicon.ico" />
+<link rel="shortcut icon" href="favicon.ico" />
+
 <script type="text/javascript">
 if(${ empty sessionScope.id }){
 	alert("로그인 후 이용해 주세요");
@@ -17,7 +21,7 @@ if(${ empty sessionScope.id }){
 </script>
 <style type="text/css">
 tr:nth-child(even) { background-color: #f5f5f5 }
-tr:hover{ background-color: #ffdbd0 }
+tr:hover{ background-color: #BADFFF }
 table { table-layout: fixed; word-break:break-all }
 #container{ width: 80rem; margin: 0 auto }
 #postNumTh{ width: 10rem }
@@ -28,20 +32,22 @@ table { table-layout: fixed; word-break:break-all }
 .btn-dark{ font-size: 1.2rem !important }
 #pagination{ margin-top: 5rem }
 .page-link{ cursor: pointer; }
+.btn-dark {border:none; background-color:black; color: white; padding: .5rem 1.5rem; border-radius: 1rem;}
+.btn-dark:hover {cursor: pointer;}
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> -->
 
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-<link rel="icon" href="./images/icon/favicon.ico" />
-<link rel="shortcut icon" href="favicon.ico" />
-<link rel="stylesheet" href="./css/reset.css">
-<link rel="stylesheet" href="./css/admin_user_manage.css">
-<link rel="stylesheet" href="./css/admin_pagination.css">
-<link rel="stylesheet" href="./css/admin_common_header.css">
+
+
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/admin_user_manage.css">
+<link rel="stylesheet" href="css/admin_pagination.css">
+<link rel="stylesheet" href="css/admin_common_header.css">
 
 <script type="text/javascript">
 $(function(){

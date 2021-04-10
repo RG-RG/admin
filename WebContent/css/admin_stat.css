@@ -54,7 +54,7 @@ body {
 }
 
 .section_main .stat_table li:hover {
-    background-color: #ffdbd0
+    background-color: #BADFFF;
 }
 
 .section_main .stat_table li:first-child {

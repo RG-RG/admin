@@ -25,7 +25,7 @@ body {
 
 .section_main .user_table {
     font-size: 1.4rem;
-    line-height: 3.5rem;
+    line-height: 4.5rem;
     text-align: center;
     margin-top: 3rem
 }
@@ -37,13 +37,12 @@ body {
 .section_main .user_table li {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: 1fr 3fr 5fr 2fr;
-    grid-template-columns: 1fr 3fr 5fr 2fr;
-    height: 3.5rem
+    -ms-grid-columns: 1.5fr 3fr 5fr 2fr;
+    grid-template-columns: 1.5fr 3fr 5fr 2fr;
 }
 
 .section_main .user_table li:hover {
-    background-color: #ffdbd0
+    background-color: #BADFFF
 }
 
 .section_main .user_table li:first-child {
@@ -52,17 +51,3 @@ body {
 }
 
 
-
-@media (min-width:901px) {
-    .section_main {
-        max-width: 90%;
-        min-width: 80rem
-    }
-}
-
-@media (min-width:1201px) {
-    .section_main {
-        max-width: 70%;
-        min-width: 80rem
-    }
-}
